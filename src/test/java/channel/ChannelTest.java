@@ -2,7 +2,7 @@ package channel;
 
 import base.BaseTests;
 import org.junit.jupiter.api.Test;
-import pages.LoginPage;
+import pages.HomePage;
 import pages.YoutubeHomePage;
 import pages.YoutubeSearchResultsPage;
 import pages.YoutubeVideoPage;
@@ -14,13 +14,12 @@ public class ChannelTest extends BaseTests {
 
     @Test
     public void testSubscribeChannel(){
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        homePage.clickLanguageSettings();
+        homePage.clickHuOption();
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -33,13 +32,12 @@ public class ChannelTest extends BaseTests {
 
     @Test
     public void testUnSubscribeChannel(){
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        homePage.clickLanguageSettings();
+        homePage.clickHuOption();
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();

@@ -25,7 +25,7 @@ public class BaseTests {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--lang=hu");
         driver = new ChromeDriver(options);
-        driver.get("https://www.youtube.com");
+        driver.get("https://accounts.google.com/signin/v2/identifier?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Dhu%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252F&hl=hu&ec=65620&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
     }

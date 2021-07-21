@@ -1,9 +1,8 @@
 package playlist;
 
 import base.BaseTests;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import pages.LoginPage;
+import pages.HomePage;
 import pages.YoutubeHomePage;
 import pages.YoutubeSearchResultsPage;
 import pages.YoutubeVideoPage;
@@ -14,13 +13,12 @@ public class PlaylistTests extends BaseTests {
 
     @Test
     public void createPlaylist(){
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        homePage.clickLanguageSettings();
+        homePage.clickHuOption();
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -37,13 +35,12 @@ public class PlaylistTests extends BaseTests {
 
     @Test
     public void removePlaylist() throws InterruptedException {
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        homePage.clickLanguageSettings();
+        homePage.clickHuOption();
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -66,13 +63,12 @@ public class PlaylistTests extends BaseTests {
 
     @Test
     public void addPlaylist() {
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        homePage.clickLanguageSettings();
+        homePage.clickHuOption();
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();

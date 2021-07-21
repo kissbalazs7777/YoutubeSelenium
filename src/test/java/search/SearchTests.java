@@ -12,13 +12,12 @@ public class SearchTests extends BaseTests {
 
     @Test
     public void testSearchWrittenCriteria(){
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        homePage.clickLanguageSettings();
+        homePage.clickHuOption();
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -28,13 +27,12 @@ public class SearchTests extends BaseTests {
 
     @Test
     public void testSearchVideoWithSearchHistory(){
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        homePage.clickLanguageSettings();
+        homePage.clickHuOption();
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -47,13 +45,12 @@ public class SearchTests extends BaseTests {
 
     @Test
     public void testRemoveItemFromSearchHistory(){
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        homePage.clickLanguageSettings();
+        homePage.clickHuOption();
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
