@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomePage;
+import org.openqa.selenium.chrome.ChromeOptions;
+
 
 public class BaseTests {
 
