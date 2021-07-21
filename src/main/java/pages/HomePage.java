@@ -14,7 +14,7 @@ public class HomePage {
     private final By huOptionFromLanguageSettings = By.xpath("//div[@data-value='hu']");
     private final By emailInput = By.name("identifier");
     private final By nextButton = By.xpath("//div[2]/div/div/div[2]/div/div[2]/div/div[1]/div/div/button/span");
-    private final By passwordInput = By.name("password");
+    private final By passwordInput = By.xpath("//input[@type='password']");
     private final By submitButton = By.id("passwordNext");
 
     public void clickLanguageSettings(){

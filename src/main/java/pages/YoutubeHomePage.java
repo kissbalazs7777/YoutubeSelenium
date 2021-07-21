@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class YoutubeHomePage {
 
     private WebDriver driver;
-    private final By avatarButton = By.id("avatar-btn");
+    private final By avatarButton = By.xpath("//button/yt-img-shadow/img");
     private final By languageSettingButton = By.xpath("//yt-multi-page-menu-section-renderer[2]/div[2]/ytd-compact-link-renderer[1]/a");
     private final By huOptionFromLanguageSettings = By.xpath("//yt-formatted-string[text()='Magyar']");
     private final By settingsButton = By.xpath("//*[text()='Beállítások' and @id='label']");
