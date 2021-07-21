@@ -12,13 +12,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class VideoPlayTests extends BaseTests {
 
     @Test
-    public void testNavigateToVideo() {
+    public void testNavigateToVideo() throws InterruptedException {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
+        Thread.sleep(2000);
+        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -29,13 +31,15 @@ public class VideoPlayTests extends BaseTests {
     }
 
     @Test
-    public void testStopActions() {
+    public void testStopActions() throws InterruptedException {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
+        Thread.sleep(2000);
+        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -48,13 +52,15 @@ public class VideoPlayTests extends BaseTests {
     }
 
     @Test
-    public void testStartActions() {
+    public void testStartActions() throws InterruptedException {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
+        Thread.sleep(2000);
+        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -68,13 +74,15 @@ public class VideoPlayTests extends BaseTests {
     }
 
     @Test
-    public void testFullScreen() {
+    public void testFullScreen() throws InterruptedException {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
+        Thread.sleep(2000);
+        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -88,13 +96,15 @@ public class VideoPlayTests extends BaseTests {
     }
 
     @Test
-    public void testCommentarySettings() {
+    public void testCommentarySettings() throws InterruptedException {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
+        Thread.sleep(2000);
+        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -109,13 +119,15 @@ public class VideoPlayTests extends BaseTests {
     }
 
     @Test
-    public void testSpeed(){
+    public void testSpeed() throws InterruptedException {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
+        Thread.sleep(2000);
+        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -133,13 +145,15 @@ public class VideoPlayTests extends BaseTests {
     }
 
     @Test
-    public void testQuality() {
+    public void testQuality() throws InterruptedException {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
+        Thread.sleep(2000);
+        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -157,13 +171,15 @@ public class VideoPlayTests extends BaseTests {
     }
 
     @Test
-    public void testLikeVideo() {
+    public void testLikeVideo() throws InterruptedException {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
+        Thread.sleep(2000);
+        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -177,13 +193,15 @@ public class VideoPlayTests extends BaseTests {
     }
 
     @Test
-    public void testDisLikeVideo() {
+    public void testDisLikeVideo() throws InterruptedException {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
+        Thread.sleep(2000);
+        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();

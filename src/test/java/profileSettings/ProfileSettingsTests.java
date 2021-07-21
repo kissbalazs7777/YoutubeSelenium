@@ -12,13 +12,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ProfileSettingsTests extends BaseTests {
 
     @Test
-    public void testSuccessfulLogin(){
+    public void testSuccessfulLogin() throws InterruptedException {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
+        Thread.sleep(2000);
+        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -28,13 +30,15 @@ public class ProfileSettingsTests extends BaseTests {
     }
 
     @Test
-    public void testLogOut(){
+    public void testLogOut() throws InterruptedException {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
+        Thread.sleep(2000);
+        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();

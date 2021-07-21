@@ -11,13 +11,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class SearchTests extends BaseTests {
 
     @Test
-    public void testSearchWrittenCriteria(){
+    public void testSearchWrittenCriteria() throws InterruptedException {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
+        Thread.sleep(2000);
+        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -26,13 +28,15 @@ public class SearchTests extends BaseTests {
     }
 
     @Test
-    public void testSearchVideoWithSearchHistory(){
+    public void testSearchVideoWithSearchHistory() throws InterruptedException {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
+        Thread.sleep(2000);
+        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -44,13 +48,15 @@ public class SearchTests extends BaseTests {
     }
 
     @Test
-    public void testRemoveItemFromSearchHistory(){
+    public void testRemoveItemFromSearchHistory() throws InterruptedException {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
+        Thread.sleep(2000);
+        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();

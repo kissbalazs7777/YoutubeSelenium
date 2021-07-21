@@ -73,7 +73,9 @@ public class YoutubeHomePage {
         return new YoutubeSearchHistoryPage(driver);
     }
 
-
+    public String getUrl(){
+        return driver.getCurrentUrl();
+    }
 
     public YoutubeHomePage(WebDriver driver) {
         this.driver = driver;
