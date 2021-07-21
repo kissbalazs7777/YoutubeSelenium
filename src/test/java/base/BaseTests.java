@@ -19,8 +19,10 @@ public class BaseTests {
     @BeforeEach
     public void setUp(){
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.get("https://www.youtube.com/?gl=HU");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--lang=hu");
+        driver = new ChromeDriver(options);
+        driver.get("https://www.youtube.com");
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
     }
