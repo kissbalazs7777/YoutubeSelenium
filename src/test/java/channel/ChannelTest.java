@@ -1,7 +1,6 @@
 package channel;
 
 import base.BaseTests;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pages.LoginPage;
 import pages.YoutubeHomePage;
@@ -16,10 +15,15 @@ public class ChannelTest extends BaseTests {
     @Test
     public void testSubscribeChannel(){
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
@@ -30,10 +34,15 @@ public class ChannelTest extends BaseTests {
     @Test
     public void testUnSubscribeChannel(){
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();

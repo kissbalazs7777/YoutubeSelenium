@@ -15,10 +15,15 @@ public class ProfileSettingsTests extends BaseTests {
     @Test
     public void testSuccessfulLogin(){
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.clickAvatarButton();
         YoutubeAccountPage youtubeAccountPage = youtubeHomePage.clickSettings();
         assertEquals("ijfutrabanttesztelok@gmail.com", youtubeAccountPage.getTextFromSpan());
@@ -27,10 +32,15 @@ public class ProfileSettingsTests extends BaseTests {
     @Test
     public void testLogOut(){
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.clickAvatarButton();
         HomePage youtubeHomePageAfterLogOut = youtubeHomePage.clickLogOutButton();
         assertTrue(youtubeHomePageAfterLogOut.getLoginButton() > 0);

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class HomePage {
 
     private WebDriver driver;
-    private final By loginButton = By.xpath("//a[@aria-label='Bejelentkezés']");
+    private final By loginButton = By.xpath("//div[1]/div[1]/div/div/a");
 
     public LoginPage clickLoginButton(){
         driver.findElement(loginButton).click();

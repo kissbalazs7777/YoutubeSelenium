@@ -13,10 +13,15 @@ public class SearchTests extends BaseTests {
     @Test
     public void testSearchWrittenCriteria(){
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.clickWrittenCriteria();
         assertEquals("rgba(0, 0, 0, 0)", youtubeHomePage.getWrittenCriteriaColor());
     }
@@ -24,10 +29,15 @@ public class SearchTests extends BaseTests {
     @Test
     public void testSearchVideoWithSearchHistory(){
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         YoutubeSearchHistoryPage youtubeSearchHistoryPage = youtubeHomePage.clickSearchHistoryButton();
         youtubeSearchHistoryPage.clickSearchInput();
         youtubeSearchHistoryPage.typeInSearchInput("gopro");
@@ -38,10 +48,15 @@ public class SearchTests extends BaseTests {
     @Test
     public void testRemoveItemFromSearchHistory(){
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();

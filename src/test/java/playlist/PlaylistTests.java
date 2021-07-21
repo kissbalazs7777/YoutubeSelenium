@@ -15,10 +15,15 @@ public class PlaylistTests extends BaseTests {
     @Test
     public void createPlaylist(){
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
@@ -33,10 +38,15 @@ public class PlaylistTests extends BaseTests {
     @Test
     public void removePlaylist() throws InterruptedException {
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
@@ -57,10 +67,15 @@ public class PlaylistTests extends BaseTests {
     @Test
     public void addPlaylist() {
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();

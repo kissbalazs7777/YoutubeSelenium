@@ -15,10 +15,15 @@ public class VideoPlayTests extends BaseTests {
     @Test
     public void testNavigateToVideo() {
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
@@ -28,10 +33,15 @@ public class VideoPlayTests extends BaseTests {
     @Test
     public void testStopActions() {
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
@@ -43,10 +53,15 @@ public class VideoPlayTests extends BaseTests {
     @Test
     public void testStartActions() {
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
@@ -59,10 +74,15 @@ public class VideoPlayTests extends BaseTests {
     @Test
     public void testFullScreen() {
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
@@ -73,12 +93,17 @@ public class VideoPlayTests extends BaseTests {
     }
 
     @Test
-    public void testCommentarySettings() throws InterruptedException {
+    public void testCommentarySettings() {
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
@@ -92,10 +117,15 @@ public class VideoPlayTests extends BaseTests {
     @Test
     public void testSpeed(){
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
@@ -112,10 +142,15 @@ public class VideoPlayTests extends BaseTests {
     @Test
     public void testQuality() {
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
@@ -132,10 +167,15 @@ public class VideoPlayTests extends BaseTests {
     @Test
     public void testLikeVideo() {
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
@@ -148,10 +188,15 @@ public class VideoPlayTests extends BaseTests {
     @Test
     public void testDisLikeVideo() {
         LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.typeEmail("ladatolcsontesztelek@gmail.com");
+        loginPage.clickLanguageSettings();
+        loginPage.clickHuOption();
+        loginPage.typeEmail(email);
         loginPage.clickNextButton();
-        loginPage.typePassword("QA123456");
+        loginPage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
         youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();

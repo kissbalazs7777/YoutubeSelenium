@@ -5,14 +5,15 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.HomePage;
 import org.openqa.selenium.chrome.ChromeOptions;
-
+import pages.HomePage;
 
 public class BaseTests {
 
     private WebDriver driver;
     protected HomePage homePage;
+    protected String email = "ladatolcsontesztelek@gmail.com";
+    protected String pw = "QA123456";
 
     public WebDriver getDriver() {
         return driver;
