@@ -20,7 +20,7 @@ public class BaseTests {
     public void setUp(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.get("http://youtube.com/");
+        driver.get("https://www.youtube.com/?gl=HU");
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
     }
