@@ -38,7 +38,7 @@ public class YoutubeVideoPage {
     private final By comment = By.xpath("//yt-formatted-string[text()='Idős anyám is mívelte']");
     private final By editCommentKebabMenu = By.xpath("//ytd-comment-thread-renderer[1]/ytd-comment-renderer/div[2]/div[3]/ytd-menu-renderer/yt-icon-button/button/yt-icon");
     private final By editCommentButton = By.xpath("//yt-formatted-string[text()='Szerkesztés']");
-    private final By saveEditedCommentButton = By.xpath("//ytd-comment-renderer/div[3]/ytd-comment-dialog-renderer/ytd-commentbox/div/div[4]/div[5]/ytd-button-renderer[2]/a/tp-yt-paper-button/yt-formatted-string");
+    private final By saveEditedCommentButton = By.xpath("//ytd-comment-renderer/div[3]/ytd-comment-dialog-renderer/ytd-commentbox/div/div[4]/div[5]/ytd-button-renderer[2]");
     private final By editedComment = By.xpath("//yt-formatted-string[text()='Idős anyám is mívelte!!!!!!!!!!!!!!!!!!!!!!']");
     private final By savePlayListButton = By.xpath("//div[3]/div/ytd-menu-renderer/div/ytd-button-renderer[2]/a/yt-icon-button/button/yt-icon");
     private final By createNewPlaylistButton = By.xpath("//yt-formatted-string[text()='Új lejátszási lista létrehozása']");
@@ -48,6 +48,10 @@ public class YoutubeVideoPage {
     private final By createdPlayList = By.xpath("//yt-formatted-string[@title='Traktor2']");
     private final By removedFromPlaylistMessage = By.xpath("//tp-yt-paper-toast/div/yt-formatted-string[1]/span[1]");
     private final By closePlaylistWindowButton = By.xpath("//ytd-add-to-playlist-renderer/div[1]/yt-icon-button/button");
+    private final By deleteCommentButton = By.xpath("//ytd-menu-navigation-item-renderer[2]/a/tp-yt-paper-item/yt-icon");
+    private final By confirmDeleteButton = By.xpath("//yt-button-renderer[@id='confirm-button']");
+    private final By commentDeletedMsg = By.xpath("//tp-yt-paper-toast//yt-formatted-string[1]");
+    private final By submittedComment = By.xpath("//ytd-item-section-renderer[@id='sections']//*[text()='Idős anyám is mívelte']");
 
     public WebDriver getDriver() {
         return driver;
@@ -193,7 +197,7 @@ public class YoutubeVideoPage {
     public void writeIntoEditCommentInputField(String innerHtml){
         System.out.println(innerHtml);
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("document.getElementById('contenteditable-root').innerHTML = '" + innerHtml + "'");
+        js.executeScript("document.querySelectorAll('#contenteditable-root')[1].innerHTML = '" + innerHtml + "'");
     }
 
     public void scrollDown() throws InterruptedException {
@@ -205,6 +209,11 @@ public class YoutubeVideoPage {
     public void makeSubmitButtonClickable(String attribute){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("document.getElementById('submit-button').removeAttribute('"+ attribute +"')");
+    }
+
+    public void makeSaveButtonClickable(String attribute){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("document.querySelectorAll('#submit-button')[1].removeAttribute('"+ attribute +"')");
     }
 
     public void clickSubmitCommentButton(){
@@ -299,8 +308,8 @@ public class YoutubeVideoPage {
 
     public void waitUntilPlaylistCreatedMsgDisappear(){
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(playListCreatedMessage));
         try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(playListCreatedMessage));
             driver.findElement(playListCreatedMessage);
         }catch (Exception ignored){
 
@@ -309,8 +318,8 @@ public class YoutubeVideoPage {
 
     public void waitUntilFromPlaylistRemovedMsgDisappear(){
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(removedFromPlaylistMessage));
         try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(removedFromPlaylistMessage));
             driver.findElement(removedFromPlaylistMessage);
         }catch (Exception ignored){
 
@@ -323,6 +332,35 @@ public class YoutubeVideoPage {
 
     public void clicklogo(){
         driver.findElement(logo).click();
+    }
+
+    public void clickDeleteCommentButton(){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.findElement(deleteCommentButton).click();
+    }
+
+    public void clickConfirmDeleteButton(){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.findElement(confirmDeleteButton).click();
+    }
+
+    public boolean isCommentDeletedMsgShowedUp(){
+        try{
+            WebDriverWait wait = new WebDriverWait(driver, 5);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(commentDeletedMsg));
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
+    public void waitUntilCommentShowsUp(){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 5);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(submittedComment));
+        }catch (Exception e){
+            System.out.println("Comment is not submitted");
+        }
     }
 
     public YoutubeVideoPage(WebDriver driver) {
