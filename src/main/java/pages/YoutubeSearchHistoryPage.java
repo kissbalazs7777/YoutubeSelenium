@@ -9,9 +9,9 @@ public class YoutubeSearchHistoryPage {
 
     private WebDriver driver;
     private final By searchInput = By.xpath("//input[@name='query']");
-    private final By searchIcon = By.xpath("//button[@aria-label='Keresés a megtekintési előzményekben']");
-    private final By removeFromHistoryButton = By.xpath("//button[@aria-label='Eltávolítás innen: Korábbi megtekintések']");
-    private final By removedFromHistoryMsg = By.xpath("//yt-formatted-string[@aria-label='A videó összes megtekintését eltávolítottuk az előzményekből']");
+    private final By searchIcon = By.xpath("//span[1]//ytd-button-renderer//yt-icon-button/button");
+    private final By removeFromHistoryButton = By.xpath("//ytd-item-section-renderer[1]//ytd-video-renderer[1]//a/yt-icon-button/button");
+    private final By removedFromHistoryMsg = By.xpath("//tp-yt-paper-toast//yt-formatted-string[1]");
 
     public void clickSearchInput(){
         driver.findElement(searchInput).click();

@@ -1,9 +1,7 @@
 package comments;
 
 import base.BaseTests;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import pages.LoginPage;
 import pages.YoutubeHomePage;
 import pages.YoutubeSearchResultsPage;
 import pages.YoutubeVideoPage;
@@ -14,14 +12,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CommentsTest extends BaseTests {
 
     @Test
-    public void testWriteComment() throws InterruptedException {
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+    public void testWriteComment() {
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -34,17 +29,20 @@ public class CommentsTest extends BaseTests {
         youtubeVideoPage.makeSubmitButtonClickable("Disabled");
         youtubeVideoPage.clickSubmitCommentButton();
         assertTrue(youtubeVideoPage.isCommentShowedUp());
+        //restore original state
+        youtubeVideoPage.waitUntilCommentShowsUp();
+        youtubeVideoPage.clickKebabMenu();
+        youtubeVideoPage.clickDeleteCommentButton();
+        youtubeVideoPage.clickConfirmDeleteButton();
+
     }
 
     @Test
-    public void editComment() throws InterruptedException {
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+    public void editComment() {
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -56,12 +54,41 @@ public class CommentsTest extends BaseTests {
         youtubeVideoPage.writeIntoCommentInputField("Idős anyám is mívelte");
         youtubeVideoPage.makeSubmitButtonClickable("Disabled");
         youtubeVideoPage.clickSubmitCommentButton();
+        youtubeVideoPage.waitUntilCommentShowsUp();
         youtubeVideoPage.clickKebabMenu();
         youtubeVideoPage.clickEditCommentButton();
         youtubeVideoPage.writeIntoEditCommentInputField("Idős anyám is mívelte!!!!!!!!!!!!!!!!!!!!!!");
-        youtubeVideoPage.makeSubmitButtonClickable("Disabled");
+        youtubeVideoPage.makeSaveButtonClickable("Disabled");
         youtubeVideoPage.clickSaveEditedCommentButton();
         assertTrue(youtubeVideoPage.isEditedCommentShowedUp());
+        //restore original state
+        youtubeVideoPage.waitUntilCommentShowsUp();
+        youtubeVideoPage.clickKebabMenu();
+        youtubeVideoPage.clickDeleteCommentButton();
+        youtubeVideoPage.clickConfirmDeleteButton();
     }
 
+    @Test
+    public void testDeleteComment() { ;
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
+        youtubeHomePage.clickAvatarButton();
+        youtubeHomePage.clickLanguageSettings();
+        youtubeHomePage.clickHuOption();
+        youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
+        YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
+        YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
+        Utils.scrollDown(getDriver());
+        youtubeVideoPage.clickInput();
+        youtubeVideoPage.writeIntoCommentInputField("Idős anyám is mívelte");
+        youtubeVideoPage.makeSubmitButtonClickable("Disabled");
+        youtubeVideoPage.clickSubmitCommentButton();
+        youtubeVideoPage.waitUntilCommentShowsUp();
+        youtubeVideoPage.clickKebabMenu();
+        youtubeVideoPage.clickDeleteCommentButton();
+        youtubeVideoPage.clickConfirmDeleteButton();
+        assertTrue(youtubeVideoPage.isCommentDeletedMsgShowedUp());
+    }
 }

@@ -2,10 +2,10 @@ package videoPlay;
 
 import base.BaseTests;
 import org.junit.jupiter.api.Test;
-import pages.LoginPage;
 import pages.YoutubeHomePage;
 import pages.YoutubeSearchResultsPage;
 import pages.YoutubeVideoPage;
+import utils.Utils;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -14,13 +14,10 @@ public class VideoPlayTests extends BaseTests {
 
     @Test
     public void testNavigateToVideo() {
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -31,14 +28,11 @@ public class VideoPlayTests extends BaseTests {
     }
 
     @Test
-    public void testStopActions() {
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+    public void testStopActions() throws InterruptedException {
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -47,18 +41,18 @@ public class VideoPlayTests extends BaseTests {
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
         youtubeVideoPage.handleVideoAds();
         youtubeVideoPage.clickVideoManagingButton();
-        assertEquals("Lejátszás (k)" ,youtubeVideoPage.getWhetherStartOrStopVideoButton());
+        double stopTime = youtubeVideoPage.getProgressBarWhenPaused();
+        Utils.waitForXMillis(2000);
+        double currentTime = youtubeVideoPage.getProgressBarWhenPaused();
+        assertEquals(stopTime, currentTime);
     }
 
     @Test
-    public void testStartActions() {
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+    public void testStartActions() throws InterruptedException {
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -67,19 +61,19 @@ public class VideoPlayTests extends BaseTests {
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
         youtubeVideoPage.handleVideoAds();
         youtubeVideoPage.clickVideoManagingButton();
+        double stopTime = youtubeVideoPage.getProgressBarWhenPaused();
         youtubeVideoPage.clickVideoManagingButton();
-        assertEquals("Szüneteltetés (k)" ,youtubeVideoPage.getWhetherStartOrStopVideoButton());
+        Utils.waitForXMillis(2000);
+        double currentTime = youtubeVideoPage.getProgressBarWhenPaused();
+        assertTrue(currentTime > stopTime);
     }
 
     @Test
     public void testFullScreen() {
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -89,18 +83,15 @@ public class VideoPlayTests extends BaseTests {
         youtubeVideoPage.handleVideoAds();
         youtubeVideoPage.clickVideoManagingButton();
         youtubeVideoPage.clickFullScreenButton();
-        assertEquals("Kilépés a teljes képernyőből (f)" ,youtubeVideoPage.getFullScreenButtonTitle());
+        assertTrue(youtubeVideoPage.hasFullscreenAttrWatchFlexy());
     }
 
     @Test
     public void testCommentarySettings() {
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -115,14 +106,11 @@ public class VideoPlayTests extends BaseTests {
     }
 
     @Test
-    public void testSpeed(){
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+    public void testSpeed() {
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -141,13 +129,10 @@ public class VideoPlayTests extends BaseTests {
 
     @Test
     public void testQuality() {
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -166,13 +151,10 @@ public class VideoPlayTests extends BaseTests {
 
     @Test
     public void testLikeVideo() {
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -183,17 +165,16 @@ public class VideoPlayTests extends BaseTests {
         youtubeVideoPage.clickVideoManagingButton();
         youtubeVideoPage.clickLikeButton();
         assertEquals("true", youtubeVideoPage.getLikeButtonState());
+        //restore original state
+        youtubeVideoPage.clickLikeButton();
     }
 
     @Test
     public void testDisLikeVideo() {
-        LoginPage loginPage = homePage.clickLoginButton();
-        loginPage.clickLanguageSettings();
-        loginPage.clickHuOption();
-        loginPage.typeEmail(email);
-        loginPage.clickNextButton();
-        loginPage.typePassword(pw);
-        YoutubeHomePage youtubeHomePage = loginPage.clickSubmitButton();
+        homePage.typeEmail(email);
+        homePage.clickNextButton();
+        homePage.typePassword(pw);
+        YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -205,6 +186,7 @@ public class VideoPlayTests extends BaseTests {
         youtubeVideoPage.clickLikeButton();
         youtubeVideoPage.clickDisLikeButton();
         assertEquals("true", youtubeVideoPage.getDisLikeButtonState());
+        //restore original state
+        youtubeVideoPage.clickDisLikeButton();
     }
-
 }

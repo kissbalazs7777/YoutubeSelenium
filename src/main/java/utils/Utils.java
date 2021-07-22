@@ -14,4 +14,8 @@ public class Utils {
         driver.navigate().refresh();
     }
 
+    public static void waitForXMillis(int time) throws InterruptedException {
+        Thread.sleep(time);
+    }
+
 }

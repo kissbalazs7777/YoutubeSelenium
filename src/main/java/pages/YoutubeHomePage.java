@@ -10,15 +10,16 @@ import java.util.concurrent.TimeUnit;
 public class YoutubeHomePage {
 
     private WebDriver driver;
-    private final By avatarButton = By.id("avatar-btn");
+    private final By avatarButton = By.xpath("//button/yt-img-shadow/img");
     private final By languageSettingButton = By.xpath("//yt-multi-page-menu-section-renderer[2]/div[2]/ytd-compact-link-renderer[1]/a");
     private final By huOptionFromLanguageSettings = By.xpath("//yt-formatted-string[text()='Magyar']");
-    private final By settingsButton = By.xpath("//*[text()='Beállítások' and @id='label']");
-    private final By logOutButton = By.xpath("//*[text()='Kijelentkezés']");
+    private final By settingsButton = By.xpath("//yt-multi-page-menu-section-renderer[2]//ytd-compact-link-renderer[3]//div[2]/yt-formatted-string[1]");
+    private final By logOutButton = By.xpath("//yt-multi-page-menu-section-renderer[1]//ytd-compact-link-renderer[5]//div[2]/yt-formatted-string[1]");
     private final By searchField = By.xpath("//input[@id='search']");
     private final By searchIcon = By.xpath("//button[@id='search-icon-legacy']/yt-icon");
     private final By writtenCriteria = By.xpath("//yt-chip-cloud-chip-renderer[4]/yt-formatted-string");
-    private final By searchHistoryButton = By.xpath("//*[text()='Előzmények']");
+    private final By searchHistoryButton = By.xpath("//div[2]/ytd-guide-entry-renderer[1]/a/tp-yt-paper-item/yt-formatted-string");
+    //private final By loginButton = By.xpath("//div[2]/ytd-button-renderer//yt-formatted-string");
 
     public void clickAvatarButton(){
         WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -42,9 +43,9 @@ public class YoutubeHomePage {
         return new YoutubeAccountPage(driver);
     }
 
-    public HomePage clickLogOutButton(){
+    public LogInPage clickLogOutButton(){
         driver.findElement(logOutButton).click();
-        return new HomePage(driver);
+        return new LogInPage(driver);
     }
 
     public void typeInSearchField(String keyWord){
@@ -68,12 +69,10 @@ public class YoutubeHomePage {
     }
 
     public YoutubeSearchHistoryPage clickSearchHistoryButton(){
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(searchHistoryButton).click();
         return new YoutubeSearchHistoryPage(driver);
     }
-
-
 
     public YoutubeHomePage(WebDriver driver) {
         this.driver = driver;

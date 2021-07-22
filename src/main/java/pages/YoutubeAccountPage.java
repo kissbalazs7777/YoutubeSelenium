@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class YoutubeAccountPage {
 
     private WebDriver driver;
-    private final By spanWithUsedEmail = By.xpath("//span[text()='ijfutrabanttesztelok@gmail.com']");
+    private final By spanWithUsedEmail = By.xpath("//span[text()='ladatolcsontesztelek@gmail.com']");
 
     public String getTextFromSpan(){
         WebDriverWait wait = new WebDriverWait(driver, 10);
