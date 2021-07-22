@@ -11,7 +11,6 @@
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
-        <aspectj.version>1.8.10</aspectj.version>
     </properties>
 
     <dependencies>
@@ -66,15 +65,10 @@
             <artifactId>selenium-api</artifactId>
             <version>3.141.59</version>
         </dependency>
-        <dependency>
+             <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
             <version>3.0.0-M5</version>
-        </dependency>
-        <dependency>
-             <groupId>org.apache.maven.plugins</groupId>
-             <artifactId>maven-resources-plugin</artifactId>
-             <version>3.2.0</version>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
@@ -101,34 +95,12 @@
     </dependencies>
          
    <build>
-    <plugins>
-        <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-surefire-plugin</artifactId>
-                  <version>3.0.0-M5</version>
-                <configuration>
-                   <testFailureIgnore>true</testFailureIgnore>
-                </configuration>
-               <dependencies>
-                          
-                <dependency>
-                    <groupId>org.junit.jupiter</groupId>
-                    <artifactId>junit-jupiter-engine</artifactId>
-                    <version>5.5.2</version>
-                </dependency>
-                          
-                <dependency>
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>1.2.0</version>
-                </dependency>
-                          
-                <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                </dependency>
-               </dependencies>
+        <finalName>maven-unit-test</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
             </plugin>
             <plugin>
                 <groupId>io.qameta.allure</groupId>
@@ -138,6 +110,6 @@
                     <reportVersion>2.4.1</reportVersion>
                 </configuration>
             </plugin>
-    </plugins>
-</build>
+        </plugins>
+    </build>
 </project>
