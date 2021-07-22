@@ -16,6 +16,8 @@ public class HomePage {
     private final By nextButton = By.xpath("//div[2]/div/div/div[2]/div/div[2]/div/div[1]/div/div/button/span");
     private final By passwordInput = By.xpath("//input[@type='password']");
     private final By submitButton = By.id("passwordNext");
+    private final By secondEmailInput = By.xpath("//input[@name='knowledgePreregisteredEmailResponse']");
+    private final By continueButton = By.xpath("//div[1]/div/div/button/span");
 
     public void clickLanguageSettings(){
         driver.findElement(languageSettings).click();
@@ -42,7 +44,26 @@ public class HomePage {
 
     public YoutubeHomePage clickSubmitButton(){
         driver.findElement(submitButton).click();
+        WebDriverWait wait = new WebDriverWait(driver, 2);
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(secondEmailInput));
+            driver.findElement(secondEmailInput);
+            clickSecondEmailInput();
+            clickContinueButton();
+        }catch (Exception e){
+            return new YoutubeHomePage(driver);
+        }
         return new YoutubeHomePage(driver);
+    }
+
+    public void clickSecondEmailInput(){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.findElement(secondEmailInput).click();
+    }
+
+    public void clickContinueButton(){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.findElement(continueButton).click();
     }
 
     public HomePage(WebDriver driver) {
