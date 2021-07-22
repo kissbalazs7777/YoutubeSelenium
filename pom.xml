@@ -66,10 +66,15 @@
             <artifactId>selenium-api</artifactId>
             <version>3.141.59</version>
         </dependency>
-             <dependency>
+        <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
             <version>3.0.0-M5</version>
+        </dependency>
+        <dependency>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-resources-plugin</artifactId>
+             <version>3.2.0</version>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
