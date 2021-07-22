@@ -12,14 +12,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PlaylistTests extends BaseTests {
 
     @Test
-    public void createPlaylist() throws InterruptedException {
+    public void createPlaylist() {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
-        Thread.sleep(2000);
         System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
@@ -36,14 +35,13 @@ public class PlaylistTests extends BaseTests {
     }
 
     @Test
-    public void removePlaylist() throws InterruptedException {
+    public void removePlaylist() {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
-        Thread.sleep(2000);
         System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
@@ -62,18 +60,16 @@ public class PlaylistTests extends BaseTests {
         youtubeVideoPage.clickSavePlaylistButton();
         youtubeVideoPage.clickCreatedPlayList();
         assertTrue(youtubeVideoPage.isRemovedFromPlayListMessageShowedUp());
-        Thread.sleep(10000);
     }
 
     @Test
-    public void addPlaylist() throws InterruptedException {
+    public void addPlaylist() {
         homePage.clickLanguageSettings();
         homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
-        Thread.sleep(2000);
         System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
@@ -92,6 +88,7 @@ public class PlaylistTests extends BaseTests {
 
         youtubeVideoPage.clickSavePlaylistButton();
         youtubeVideoPage.clickCreatedPlayList();
+        youtubeVideoPage.clickClosePlaylistWindowButton();
 
         youtubeVideoPage.waitUntilFromPlaylistRemovedMsgDisappear();
         youtubeVideoPage.clickSavePlaylistButton();

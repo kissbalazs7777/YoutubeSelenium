@@ -47,6 +47,7 @@ public class YoutubeVideoPage {
     private final By playListCreatedMessage = By.xpath("//tp-yt-paper-toast/div/yt-formatted-string[1]/span[1]");
     private final By createdPlayList = By.xpath("//yt-formatted-string[@title='Traktor2']");
     private final By removedFromPlaylistMessage = By.xpath("//tp-yt-paper-toast/div/yt-formatted-string[1]/span[1]");
+    private final By closePlaylistWindowButton = By.xpath("//ytd-add-to-playlist-renderer/div[1]/yt-icon-button/button");
 
     public WebDriver getDriver() {
         return driver;
@@ -246,6 +247,7 @@ public class YoutubeVideoPage {
     }
 
     public void clickSavePlaylistButton(){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.findElement(savePlayListButton).click();
     }
 
@@ -313,6 +315,10 @@ public class YoutubeVideoPage {
         }catch (Exception ignored){
 
         }
+    }
+
+    public void clickClosePlaylistWindowButton(){
+        driver.findElement(closePlaylistWindowButton).click();
     }
 
     public void clicklogo(){

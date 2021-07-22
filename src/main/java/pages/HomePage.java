@@ -49,6 +49,7 @@ public class HomePage {
             wait.until(ExpectedConditions.visibilityOfElementLocated(secondEmailInput));
             driver.findElement(secondEmailInput);
             clickSecondEmailInput();
+            typeInSeconEmailInput("lamborginitraktorteszter@gmail.com");
             clickContinueButton();
         }catch (Exception e){
             return new YoutubeHomePage(driver);
@@ -59,6 +60,11 @@ public class HomePage {
     public void clickSecondEmailInput(){
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.findElement(secondEmailInput).click();
+    }
+
+    public void typeInSeconEmailInput(String email){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.findElement(secondEmailInput).sendKeys(email);
     }
 
     public void clickContinueButton(){
