@@ -2,7 +2,6 @@ package channel;
 
 import base.BaseTests;
 import org.junit.jupiter.api.Test;
-import pages.HomePage;
 import pages.YoutubeHomePage;
 import pages.YoutubeSearchResultsPage;
 import pages.YoutubeVideoPage;
@@ -13,15 +12,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ChannelTest extends BaseTests {
 
     @Test
-    public void testSubscribeChannel() throws InterruptedException {
-        homePage.clickLanguageSettings();
-        homePage.clickHuOption();
+    public void testSubscribeChannel() {
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
-        Thread.sleep(2000);
-        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -30,18 +25,17 @@ public class ChannelTest extends BaseTests {
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
         youtubeVideoPage.clickSubscribeButton();
         assertTrue(youtubeVideoPage.isSubscribedMessageShowedUp());
+        //restore original state
+        youtubeVideoPage.clickSubscribeButton();
+        youtubeVideoPage.clickConfirmUnSubscribeButton();
     }
 
     @Test
-    public void testUnSubscribeChannel() throws InterruptedException {
-        homePage.clickLanguageSettings();
-        homePage.clickHuOption();
+    public void testUnSubscribeChannel() {
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
-        Thread.sleep(2000);
-        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();

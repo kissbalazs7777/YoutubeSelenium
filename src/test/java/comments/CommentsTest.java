@@ -13,13 +13,10 @@ public class CommentsTest extends BaseTests {
 
     @Test
     public void testWriteComment() {
-        homePage.clickLanguageSettings();
-        homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
-        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -32,17 +29,20 @@ public class CommentsTest extends BaseTests {
         youtubeVideoPage.makeSubmitButtonClickable("Disabled");
         youtubeVideoPage.clickSubmitCommentButton();
         assertTrue(youtubeVideoPage.isCommentShowedUp());
+        //restore original state
+        youtubeVideoPage.waitUntilCommentShowsUp();
+        youtubeVideoPage.clickKebabMenu();
+        youtubeVideoPage.clickDeleteCommentButton();
+        youtubeVideoPage.clickConfirmDeleteButton();
+
     }
 
     @Test
     public void editComment() {
-        homePage.clickLanguageSettings();
-        homePage.clickHuOption();
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
-        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -61,17 +61,19 @@ public class CommentsTest extends BaseTests {
         youtubeVideoPage.makeSaveButtonClickable("Disabled");
         youtubeVideoPage.clickSaveEditedCommentButton();
         assertTrue(youtubeVideoPage.isEditedCommentShowedUp());
+        //restore original state
+        youtubeVideoPage.waitUntilCommentShowsUp();
+        youtubeVideoPage.clickKebabMenu();
+        youtubeVideoPage.clickDeleteCommentButton();
+        youtubeVideoPage.clickConfirmDeleteButton();
     }
 
     @Test
-    public void testDeleteComment() {
-        homePage.clickLanguageSettings();
-        homePage.clickHuOption();
+    public void testDeleteComment() { ;
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
-        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();

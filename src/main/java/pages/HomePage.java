@@ -10,8 +10,6 @@ import java.util.concurrent.TimeUnit;
 public class HomePage {
 
     private WebDriver driver;
-    private final By languageSettings  = By.xpath("//div[25]/span");
-    private final By huOptionFromLanguageSettings = By.xpath("//div[@data-value='hu']");
     private final By emailInput = By.name("identifier");
     private final By nextButton = By.xpath("//div[2]/div/div/div[2]/div/div[2]/div/div[1]/div/div/button/span");
     private final By passwordInput = By.xpath("//input[@type='password']");
@@ -19,16 +17,8 @@ public class HomePage {
     private final By secondEmailInput = By.xpath("//input[@name='knowledgePreregisteredEmailResponse']");
     private final By continueButton = By.xpath("//div[1]/div/div/button/span");
 
-    public void clickLanguageSettings(){
-        driver.findElement(languageSettings).click();
-    }
-
-    public void clickHuOption(){
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.findElement(huOptionFromLanguageSettings).click();
-    }
-
     public void typeEmail(String email){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.findElement(emailInput).sendKeys(email);
     }
 
@@ -39,6 +29,7 @@ public class HomePage {
     }
 
     public void typePassword(String pw){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.findElement(passwordInput).sendKeys(pw);
     }
 

@@ -11,15 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class SearchTests extends BaseTests {
 
     @Test
-    public void testSearchWrittenCriteria() throws InterruptedException {
-        homePage.clickLanguageSettings();
-        homePage.clickHuOption();
+    public void testSearchWrittenCriteria() {
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
-        Thread.sleep(2000);
-        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -28,18 +24,18 @@ public class SearchTests extends BaseTests {
     }
 
     @Test
-    public void testSearchVideoWithSearchHistory() throws InterruptedException {
-        homePage.clickLanguageSettings();
-        homePage.clickHuOption();
+    public void testSearchVideoWithSearchHistory() {
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
-        Thread.sleep(2000);
-        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
+        youtubeHomePage.typeInSearchField("GoPro: Tractor Drift");
+        YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
+        YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
+        youtubeVideoPage.clicklogo();
         YoutubeSearchHistoryPage youtubeSearchHistoryPage = youtubeHomePage.clickSearchHistoryButton();
         youtubeSearchHistoryPage.clickSearchInput();
         youtubeSearchHistoryPage.typeInSearchInput("gopro");
@@ -48,15 +44,11 @@ public class SearchTests extends BaseTests {
     }
 
     @Test
-    public void testRemoveItemFromSearchHistory() throws InterruptedException {
-        homePage.clickLanguageSettings();
-        homePage.clickHuOption();
+    public void testRemoveItemFromSearchHistory() {
         homePage.typeEmail(email);
         homePage.clickNextButton();
         homePage.typePassword(pw);
         YoutubeHomePage youtubeHomePage = homePage.clickSubmitButton();
-        Thread.sleep(2000);
-        System.out.println(youtubeHomePage.getUrl());
         youtubeHomePage.clickAvatarButton();
         youtubeHomePage.clickLanguageSettings();
         youtubeHomePage.clickHuOption();
@@ -64,9 +56,7 @@ public class SearchTests extends BaseTests {
         YoutubeSearchResultsPage youtubeSearchResultsPage = youtubeHomePage.clickSearchIcon();
         YoutubeVideoPage youtubeVideoPage = youtubeSearchResultsPage.clickFirstResult();
         youtubeVideoPage.clicklogo();
-
         Utils.refresh(getDriver());
-
         YoutubeSearchHistoryPage youtubeSearchHistoryPage = youtubeHomePage.clickSearchHistoryButton();
         youtubeSearchHistoryPage.clickRemoveFromHistoryButton();
         assertTrue(youtubeSearchHistoryPage.isRemovedFromHistoryMsgShowedUp());

@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -12,38 +13,40 @@ public class YoutubeVideoPage {
 
     private WebDriver driver;
     private final By logo = By.xpath("//yt-icon[@id='logo-icon']");
+    private final By avatarButton = By.xpath("//ytd-topbar-menu-button-renderer[3]/button");
+    private final By youtubeStudioButton = By.xpath("//yt-multi-page-menu-section-renderer[1]//ytd-compact-link-renderer[3]//tp-yt-paper-item/div[2]/yt-formatted-string[1]");
     private final By adInfoButton = By.xpath("//*[contains(@id, 'ad-info-hover-text-button')]");
     private final By skipAdButton = By.xpath("//*[@class='ytp-ad-skip-button ytp-button']");
     private final By stopOrStartVideoButton = By.xpath("//button[@class='ytp-play-button ytp-button']");
     private final By fullScreenButton = By.xpath("//button[@class='ytp-fullscreen-button ytp-button']");
     private final By settingsButton = By.xpath("//button[@data-tooltip-target-id='ytp-settings-button']");
-    private final By commentaryButton = By.xpath("//div[text()='Kommentárok']");
+    private final By commentaryButton = By.xpath("//div[27]/div/div/div[1]/div[2]");
     private final By menuItemCheckBox = By.xpath("//div[@role='menuitemcheckbox']");
-    private final By changeSpeedButton = By.xpath("//div[text()='Lejátszási sebesség']");
+    private final By changeSpeedButton = By.xpath("//div[27]/div/div/div[2]/div[2]");
     private final By speed2xButton = By.xpath("//*[text()='2']");
     private final By currentSpeed = By.xpath("//*[text()='2']");
-    private final By changeQualityButton = By.xpath("//*[text()='Minőség']");
+    private final By changeQualityButton = By.xpath("//div[27]/div/div/div[3]/div[2]");
     private final By quality360pButton = By.xpath("//*[text()='360p']");
-    private final By currentQuality = By.xpath("//span[text()='360p']");
+    private final By currentQuality = By.xpath("//div[3]/div/span");
     private final By likeIcon = By.xpath("//div[3]/div/ytd-menu-renderer/div/ytd-toggle-button-renderer[1]/a/yt-icon-button/button/yt-icon");
     private final By likeButtonElement = By.xpath("//div[3]/div/ytd-menu-renderer/div/ytd-toggle-button-renderer[1]/a/yt-icon-button/button");
     private final By disLikeIcon = By.xpath("//div[3]/div/ytd-menu-renderer/div/ytd-toggle-button-renderer[2]/a/yt-icon-button/button/yt-icon");
     private final By disLikeButtonElement = By.xpath("//div[3]/div/ytd-menu-renderer/div/ytd-toggle-button-renderer[2]/a/yt-icon-button/button");
     private final By subscribeButton = By.xpath("//ytd-video-secondary-info-renderer/div/div/div/ytd-subscribe-button-renderer/tp-yt-paper-button");
-    private final By subscribedMessage = By.xpath("//*[text()='Feliratkozás hozzáadva']");
-    private final By confirmUnSubscribeButton = By.xpath("//yt-formatted-string[text()='Leiratkozás']");
-    private final By unSubscribedMessage = By.xpath("//*[text()='Feliratkozás eltávolítva']");
-    private final By commentInputField = By.xpath("//*[contains(text(), 'Írj nyilvános hozzászólást...')]");
+    private final By subscribedMessage = By.xpath("//tp-yt-paper-toast/div/yt-formatted-string[1]");
+    private final By confirmUnSubscribeButton = By.xpath("//yt-button-renderer[2]//tp-yt-paper-button/yt-formatted-string");
+    private final By unSubscribedMessage = By.xpath("//tp-yt-paper-toast//yt-formatted-string[1]");
+    private final By commentInputField = By.xpath("//*[contains(text(), 'Írj nyilvános hozzászólást...')]|//*[contains(text(), 'Add a public comment...')]");
     private final By submitCommentButton = By.xpath("//*[@id='submit-button']");
     private final By comment = By.xpath("//yt-formatted-string[text()='Idős anyám is mívelte']");
     private final By editCommentKebabMenu = By.xpath("//ytd-comment-thread-renderer[1]/ytd-comment-renderer/div[2]/div[3]/ytd-menu-renderer/yt-icon-button/button/yt-icon");
-    private final By editCommentButton = By.xpath("//yt-formatted-string[text()='Szerkesztés']");
+    private final By editCommentButton = By.xpath("//ytd-menu-navigation-item-renderer[1]//yt-formatted-string");
     private final By saveEditedCommentButton = By.xpath("//ytd-comment-renderer/div[3]/ytd-comment-dialog-renderer/ytd-commentbox/div/div[4]/div[5]/ytd-button-renderer[2]");
     private final By editedComment = By.xpath("//yt-formatted-string[text()='Idős anyám is mívelte!!!!!!!!!!!!!!!!!!!!!!']");
     private final By savePlayListButton = By.xpath("//div[3]/div/ytd-menu-renderer/div/ytd-button-renderer[2]/a/yt-icon-button/button/yt-icon");
-    private final By createNewPlaylistButton = By.xpath("//yt-formatted-string[text()='Új lejátszási lista létrehozása']");
-    private final By typePlaylistNameInput = By.xpath("//input[@placeholder='Add meg a lejátszási lista nevét...']");
-    private final By confirmCreatePlaylistButton = By.xpath("//yt-formatted-string[text()='Létrehozás']");
+    private final By createNewPlaylistButton = By.xpath("//tp-yt-paper-item/div[2]/yt-formatted-string[1]");
+    private final By typePlaylistNameInput = By.xpath("//iron-input/input");
+    private final By confirmCreatePlaylistButton = By.xpath("//ytd-add-to-playlist-create-renderer//tp-yt-paper-button/yt-formatted-string");
     private final By playListCreatedMessage = By.xpath("//tp-yt-paper-toast/div/yt-formatted-string[1]/span[1]");
     private final By createdPlayList = By.xpath("//yt-formatted-string[@title='Traktor2']");
     private final By removedFromPlaylistMessage = By.xpath("//tp-yt-paper-toast/div/yt-formatted-string[1]/span[1]");
@@ -52,9 +55,14 @@ public class YoutubeVideoPage {
     private final By confirmDeleteButton = By.xpath("//yt-button-renderer[@id='confirm-button']");
     private final By commentDeletedMsg = By.xpath("//tp-yt-paper-toast//yt-formatted-string[1]");
     private final By submittedComment = By.xpath("//ytd-item-section-renderer[@id='sections']//*[text()='Idős anyám is mívelte']");
+    private final By addedToPlayListMsg = By.xpath("//tp-yt-paper-toast//yt-formatted-string[1]/span[1]");
+    private final By videoProgressBar = By.xpath("//div[29]/div[1]/div[2]/div[6]");
+    private final By watchFlexy = By.xpath("//ytd-watch-flexy");
 
-    public WebDriver getDriver() {
-        return driver;
+    public YoutubeStudioPage clickYoutubeStudio(){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.findElement(youtubeStudioButton).click();
+        return new YoutubeStudioPage(driver);
     }
 
     public void handleVideoAds(){
@@ -83,10 +91,6 @@ public class YoutubeVideoPage {
     public void clickVideoManagingButton(){
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(stopOrStartVideoButton).click();
-    }
-
-    public String getWhetherStartOrStopVideoButton(){
-        return driver.findElement(stopOrStartVideoButton).getAttribute("aria-label");
     }
 
     public void clickFullScreenButton(){
@@ -200,12 +204,6 @@ public class YoutubeVideoPage {
         js.executeScript("document.querySelectorAll('#contenteditable-root')[1].innerHTML = '" + innerHtml + "'");
     }
 
-    public void scrollDown() throws InterruptedException {
-        Thread.sleep(3000);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0, 1000)");
-    }
-
     public void makeSubmitButtonClickable(String attribute){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("document.getElementById('submit-button').removeAttribute('"+ attribute +"')");
@@ -261,7 +259,7 @@ public class YoutubeVideoPage {
     }
 
     public void clickCreateNewPlaylistButton(){
-        WebDriverWait wait = new WebDriverWait(driver, 3);
+        WebDriverWait wait = new WebDriverWait(driver, 7);
         wait.until(ExpectedConditions.presenceOfElementLocated(createNewPlaylistButton));
         driver.findElement(createNewPlaylistButton).click();
     }
@@ -292,7 +290,9 @@ public class YoutubeVideoPage {
     public void clickCreatedPlayList(){
         WebDriverWait wait = new WebDriverWait(driver, 4);
         wait.until(ExpectedConditions.visibilityOfElementLocated(createdPlayList));
-        driver.findElement(createdPlayList).click();
+        Actions action = new Actions(driver);
+        action.moveToElement(driver.findElement(createdPlayList)).perform();
+        action.click(driver.findElement(createdPlayList)).perform();
     }
 
     public boolean isRemovedFromPlayListMessageShowedUp(){
@@ -306,21 +306,22 @@ public class YoutubeVideoPage {
         return true;
     }
 
+    public boolean isAddedToPlayListMessageShowedUp(){
+        try{
+            WebDriverWait wait = new WebDriverWait(driver, 5);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(addedToPlayListMsg));
+            driver.findElement(addedToPlayListMsg);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
     public void waitUntilPlaylistCreatedMsgDisappear(){
         WebDriverWait wait = new WebDriverWait(driver, 5);
         try {
             wait.until(ExpectedConditions.invisibilityOfElementLocated(playListCreatedMessage));
             driver.findElement(playListCreatedMessage);
-        }catch (Exception ignored){
-
-        }
-    }
-
-    public void waitUntilFromPlaylistRemovedMsgDisappear(){
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        try {
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(removedFromPlaylistMessage));
-            driver.findElement(removedFromPlaylistMessage);
         }catch (Exception ignored){
 
         }
@@ -358,9 +359,33 @@ public class YoutubeVideoPage {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 5);
             wait.until(ExpectedConditions.visibilityOfElementLocated(submittedComment));
-        }catch (Exception e){
-            System.out.println("Comment is not submitted");
+        }catch (Exception ignored){
+
         }
+    }
+
+    public void clickAvatarButton(){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.findElement(avatarButton).click();
+    }
+
+    public double getProgressBarWhenPaused(){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        String time = driver.findElement(videoProgressBar).getAttribute("style");
+        String timeStringNumber = time.replaceAll("transform: translateX[(]", "").replaceAll("px[)];", "");
+        return Double.parseDouble(timeStringNumber);
+    }
+
+    public boolean hasFullscreenAttrWatchFlexy(){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        try {
+            if(driver.findElement(watchFlexy).getAttribute("fullscreen") != null){
+                return true;
+            }
+        }catch (Exception ignored){
+
+        }
+        return false;
     }
 
     public YoutubeVideoPage(WebDriver driver) {
